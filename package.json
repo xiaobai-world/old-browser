@@ -6,6 +6,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.10.5",
+    "less": "^4.1.1",
+    "less-loader": "^9.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
