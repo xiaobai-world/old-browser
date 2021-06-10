@@ -17,7 +17,14 @@ function App() {
 
   const { version, name } = browser
 
-  const latestVersion = BrowserMap.get(name)?.get(version)
+  const current = BrowserMap.get(name)?.get(version)
+  const latest = Array.from(BrowserMap.get(name)?.entries() || []).pop()
+
+  if (!latest || !current) {
+    return
+  }
+
+  const num = dayjs(latest[1]).diff(current, 'month')
 
   return (
     <div className="how-old-browser">
@@ -27,10 +34,29 @@ function App() {
         {name === 'Firefox' && <img src={Firefox} />}
         {name === 'Safari' && <img src={Safari} />}
       </div>
-      <div className="version">
-        {name} - {version}
+
+      <div className="level">
+        Your browser version:
+        {
+          name !== 'Safari' &&
+          (num <= 1 ? <span className="very-new">very new</span>
+            : num <= 2 ? <span className="relatively-new">relatively new</span>
+              : num <= 5 ? <span className="older">older</span>
+                : <span className="very-old">very old</span>
+          )
+        }
+        {
+          name === 'Safari' && (
+            num ===0 ? <span className="very-new">very new</span>
+              : num <= 1 ? <span className="relatively-new">relatively new</span>
+                : num <= 2 ? <span className="older">older</span>
+                  : <span className="very-old">very old</span>
+          )
+        }
       </div>
-      {latestVersion} - {dayjs(currentDate).format('YYYY-MM-DD')}
+      <div className="version">
+        <span>current: {version}, latest: {latest[0]}</span>
+      </div>
     </div>
   )
 }
