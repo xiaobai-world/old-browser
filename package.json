@@ -1,6 +1,5 @@
 {
     "name": "how-old",
-    "appName": "How Old Browser",
     "version": "0.0.0",
     "scripts": {
         "dev": "vite",

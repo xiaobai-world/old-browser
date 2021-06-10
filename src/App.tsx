@@ -12,7 +12,7 @@ function App() {
   const currentDate = new Date()
 
   if (!browser) {
-    return
+    return <div></div>
   }
 
   const { version, name } = browser
@@ -21,7 +21,7 @@ function App() {
   const latest = Array.from(BrowserMap.get(name)?.entries() || []).pop()
 
   if (!latest || !current) {
-    return
+    return <div></div>
   }
 
   const num = dayjs(latest[1]).diff(current, 'month')
