@@ -4,7 +4,7 @@ import Firefox from './icon/Firefox.svg'
 import Safari from './icon/Safari.svg'
 import './App.less'
 import { getCurrentBrowserVersion, BrowserMap } from './browser'
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -47,7 +47,7 @@ function App() {
         }
         {
           name === 'Safari' && (
-            num ===0 ? <span className="very-new">very new</span>
+            num === 0 ? <span className="very-new">very new</span>
               : num <= 1 ? <span className="relatively-new">relatively new</span>
                 : num <= 2 ? <span className="older">older</span>
                   : <span className="very-old">very old</span>
