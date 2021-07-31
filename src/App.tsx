@@ -7,9 +7,7 @@ import { getCurrentBrowserVersion, BrowserMap } from './browser'
 import dayjs from 'dayjs'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [browser] = useState(getCurrentBrowserVersion())
-  const currentDate = new Date()
 
   if (!browser) {
     return <div></div>
@@ -17,10 +15,15 @@ function App() {
 
   const { version, name } = browser
 
-  const current = BrowserMap.get(name)?.get(version)
-  const latest = Array.from(BrowserMap.get(name)?.entries() || []).pop()
+  let current = BrowserMap.get(name)?.get(version)
+  let latest = Array.from(BrowserMap.get(name)?.entries() || []).pop()
 
-  if (!latest || !current) {
+  if (!current) {
+    current = dayjs().format('YYYY-MM-DD')
+    latest = [version, current]
+  }
+
+  if (!latest) {
     return <div></div>
   }
 

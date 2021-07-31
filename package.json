@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "@xiaobai-world/api": "0.0.15",
-        "dayjs": "^1.10.5",
+        "dayjs": "^1.10.6",
         "less": "^4.1.1",
         "less-loader": "^9.0.0",
         "react": "^17.0.0",
